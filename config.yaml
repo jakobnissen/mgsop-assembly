@@ -1,0 +1,16 @@
+cores: 28
+
+adapterremoval_mm: 3
+adapterremoval_adapter1: 
+adapterremoval_adapter2: 
+adapterremoval_adapterfile:
+
+assembler: spades
+assembler_kmers: 21,29,39,59,79,99
+assemble_contigs: True
+megahit_mink_1pass: False
+
+adapterremoval_path: /services/tools/adapterremoval/2.2.0/bin/AdapterRemoval
+megahit_path: /services/tools/megahit/1.1.1/megahit
+spades_path: /services/tools/SPAdes/3.11.0/bin/spades.py
+alternative_python_path: /services/tools/anaconda3/4.0.0/bin/python
