@@ -115,7 +115,7 @@ rule adapterremoval_pe:
         # Adapters
         '{ADAPTERARGS_PE} {ADAPTERARGS_LIST} '
         # Other parameters:
-        '--minlength 30 --trimns --trimqualities --minquality 2 '
+        '--minlength 30 --trimns --trimqualities --minquality 20 '
         '--qualitybase 33 --qualitymax 43 --mm {params.mm} '
         '--threads {threads}'
         
@@ -140,7 +140,7 @@ rule adapterremoval_se:
         # Adapters
         '{ADAPTERARGS_SE} {ADAPTERARGS_LIST} '
         # Other parameters:
-        '--minlength 30 --trimns --trimqualities --minquality 2 '
+        '--minlength 30 --trimns --trimqualities --minquality 20 '
         '--qualitybase 33 --qualitymax 43 --mm {params.mm} '
         '--threads {threads}'
         
