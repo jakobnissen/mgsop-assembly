@@ -22,7 +22,10 @@ for line in config['data']:
     fields = line.split()
 
     if len(fields) not in (4, 5):
-        raise ValueError('Data field {} needs 4 or 5 fields.'.format(line))
+        message = ('Error in data line {}
+                   'Data lines need one column for sample, experiment and run, '
+                   'and one or two columns for the input paths.')
+        raise ValueError(message)
 
     run, experiment, sample, *paths = fields
 
@@ -41,14 +44,21 @@ for line in config['data']:
 
     # Add them to dictionaries
     if sample in samples:
-        samples[sample].append(experiment)
+        samples[sample].add(experiment)
     else:
-        samples[sample] = [experiment]
+        samples[sample] = {experiment}
     if experiment in experiments:
-        experiments[experiment].append(run)
+        experiments[experiment].add(run)
     else:
-        experiments[experiment] = [run]
+        experiments[experiment] = {run}
     runs[run] = paths
+
+# Convert from sets to list
+for sample in samples:
+    samples[sample] = list(samples[sample])
+
+for experiment in experiments:
+    experiments[experiment] = list(experiments[experiment])
 
 # Not both SE and PE files in same experiment
 for experiment, runlist in experiments.items():
